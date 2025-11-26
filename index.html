@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelyn | Digital Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5651d6;
+            --secondary: #FF6584;
+            --dark: #2A2D3E;
+            --darker: #1E202C;
+            --light: #F7F9FC;
+            --gray: #A0A4B8;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #F44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(30, 32, 44, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .logo i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s;
+        }
+        
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .feature-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .feature-btn {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .feature-btn.view {
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        .feature-btn.view:hover {
+            background: var(--primary-dark);
+        }
+        
+        .feature-btn.play {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .feature-btn.play:hover {
+            background: var(--secondary);
+            color: var(--light);
+        }
+        
+        /* Mobile App Section */
+        .mobile-app {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .app-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .app-preview {
+            flex: 1;
+            position: relative;
+        }
+        
+        .app-mockup {
+            max-width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-content {
+            flex: 1;
+        }
+        
+        .app-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .app-content p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .app-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .app-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .app-features i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: var(--dark);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-right: 40px;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .modal-header p {
+            color: var(--gray);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .drive-instructions {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .drive-instructions h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .drive-instructions ol {
+            padding-left: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .drive-instructions li {
+            margin-bottom: 5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 50px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .app-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-buttons {
+                flex-direction: column;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>Angelyn Ramos</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#mobile">Mobile App</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-in">Welcome To My <span>Digital</span> Portfolio</h1>
+                    <p class="fade-in delay-1">An integrated platform combining personalized profiles, secure authentication, and mobile applications for a seamless digital experience.</p>
+                    <div class="hero-buttons fade-in delay-2">
+                        <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+                        <button class="btn btn-outline" id="watchDemoBtn">Watch Demo</button>
+                    </div>
+                    <div class="stats fade-in delay-3">
+                        <div class="stat-item">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Digital Ecosystem Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Integrated Platform</h2>
+                <p>Three powerful components working together to create a complete digital solution</p>
+            </div>
+            <div class="features-grid">
+                <!-- SPT1 Feature -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>SPT1 - Dynamic Personal Website</h3>
+                    <p>A fully responsive personal profile website with JavaScript interactivity, form validation, and dynamic content.</p>
+                    <div class="feature-buttons">
+                        <button class="feature-btn view" data-feature="spt1-view">
+                            <i class="fas fa-external-link-alt"></i> VIEW
+                        </button>
+                        <button class="feature-btn play" data-feature="spt1-play">
+                            <i class="fas fa-play"></i> PLAY
+                        </button>
+                    </div>
+                </div>
+
+                <!-- WS101 Feature -->
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>WS101 - Secure Authentication</h3>
+                    <p>Advanced login system with Google OAuth 2.0, password management.</p>
+                    <div class="feature-buttons">
+                        <button class="feature-btn view" data-feature="ws101-view">
+                            <i class="fas fa-external-link-alt"></i> VIEW
+                        </button>
+                        <button class="feature-btn play" data-feature="ws101-play">
+                            <i class="fas fa-play"></i> PLAY
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SPT2 Feature -->
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>SPT2 - Mobile App Prototype</h3>
+                    <p>Multi-screen mobile application with media showcase and user registration capabilities.</p>
+                    <div class="feature-buttons">
+                        <button class="feature-btn view" data-feature="spt2-view">
+                            <i class="fas fa-external-link-alt"></i> VIEW
+                        </button>
+                        <button class="feature-btn play" data-feature="spt2-play">
+                            <i class="fas fa-play"></i> PLAY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile App Section -->
+    <section class="mobile-app" id="mobile">
+        <div class="container">
+            <div class="app-container">
+                <div class="app-preview fade-in">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobile App" class="app-mockup">
+                </div>
+                <div class="app-content fade-in delay-1">
+                    <h2>Mobile Experience</h2>
+                    <p>Access your portfolio on the go with our feature-rich mobile application.</p>
+                    <ul class="app-features">
+                        <li><i class="fas fa-check-circle"></i> Multi-screen navigation</li>
+                        <li><i class="fas fa-check-circle"></i> Media showcase with video support</li>
+                        <li><i class="fas fa-check-circle"></i> Secure user registration</li>
+                        <li><i class="fas fa-check-circle"></i> Seamless integration with web platform</li>
+                    </ul>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="downloadAppBtn">Download App</button>
+                        <button class="btn btn-outline" id="viewPrototypeBtn">View Prototype</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                        <span>TechNova</span>
+                    </div>
+                    <p>Building integrated digital solutions for modern businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Website</a></li>
+                        <li><a href="#">Authentication System</a></li>
+                        <li><a href="#">Mobile Application</a></li>
+                        <li><a href="#">Quiz Certification</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Angelyn Ramos|Digital Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Feature Demo</h2>
+                <p id="modalDescription">Watch how this feature works in our platform</p>
+            </div>
+            <div class="video-container">
+                <iframe id="featureVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+        // Feature Links Configuration - GOOGLE DRIVE VIDEOS
+        const featureLinks = {
+            // SPT1 Links - Replace with your actual Google Drive links
+            'spt1-view': 'https://anngelyn14.github.io/weather-widget/',
+            'spt1-play': 'https://docs.google.com/videos/d/1TJi3cPjbTUlM3BatOvlMcda18FaEBPdQcJYu50oL7BE/edit?usp=sharing',
+            
+            // WS101 Links - Replace with your actual Google Drive links
+            'ws101-view': ' https://anngelyn14.github.io/Server/',
+            'ws101-play': 'https://docs.google.com/videos/d/1nxZk07sFwkf-Ekdw4jVGhPM2BUztDXbD630_-lGtEkw/edit?usp=sharing',
+            
+            // SPT2 Links - Replace with your actual Google Drive links
+            'spt2-view': 'https://anngelyn14.github.io/Ramos',
+            'spt2-play': 'https://docs.google.com/videos/d/1SzEu-oc3Gug5cAlKwa5c291qfXLwzPwF4JaN1aueoPI/edit?usp=sharing'
+        };
+
+        // Feature Titles for Modal
+        const featureTitles = {
+            'spt1-view': 'SPT1 - Dynamic Personal Website',
+            'spt1-play': 'SPT1  Video',
+            'ws101-view': 'WS101 - Secure Authentication',
+            'ws101-play': 'WS101 Video',
+            'spt2-view': 'SPT2 - Mobile App Prototype',
+            'spt2-play': 'SPT2 Video'
+        };
+
+        // DOM Elements
+        const videoModal = document.getElementById('videoModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const featureVideo = document.getElementById('featureVideo');
+
+        // Feature Button Event Listeners
+        document.querySelectorAll('.feature-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const feature = this.getAttribute('data-feature');
+                const link = featureLinks[feature];
+                
+                if (this.classList.contains('view')) {
+                    // VIEW button - open link in new tab
+                    window.open(link, '_blank');
+                } else if (this.classList.contains('play')) {
+                    // PLAY button - open Google Drive video in modal
+                    modalTitle.textContent = featureTitles[feature];
+                    modalDescription.textContent = 'Watch the demonstration video for this feature';
+                    
+                    // Set Google Drive embed URL
+                    featureVideo.src = link;
+                    
+                    videoModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close Modal
+        closeModal.addEventListener('click', function() {
+            videoModal.classList.remove('active');
+            featureVideo.src = '';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                featureVideo.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Navigation and Button Functionality
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            alert('Login functionality would open here');
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            alert('Sign up functionality would open here');
+        });
+
+        document.getElementById('getStartedBtn').addEventListener('click', function() {
+            alert('Get Started - Redirecting to main application');
+        });
+
+        document.getElementById('watchDemoBtn').addEventListener('click', function() {
+            // Open demo video
+            modalTitle.textContent = 'TechNova Platform Demo';
+            modalDescription.textContent = 'Watch our complete platform demonstration';
+            featureVideo.src = 'https://drive.google.com/file/d/YOUR_DEMO_VIDEO_ID/preview';
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('downloadAppBtn').addEventListener('click', function() {
+            alert('Downloading mobile app...');
+        });
+
+        document.getElementById('viewPrototypeBtn').addEventListener('click', function() {
+            // Open SPT2 video
+            modalTitle.textContent = 'SPT2 Mobile App Prototype';
+            modalDescription.textContent = 'Watch the mobile app prototype demonstration';
+            featureVideo.src = 'https://drive.google.com/file/d/YOUR_VIDEO_ID_3/preview';
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Trigger once on load
+        fadeInOnScroll();
+
+         // Instructions for Google Drive setup
+        console.log('HOW TO SET UP GOOGLE DRIVE VIDEOS:');
+        console.log('1. Upload your videos to Google Drive');
+        console.log('2. For each video:');
+        console.log('   - Right-click → Share → Anyone with link can view');
+        console.log('   - Copy the share link');
+        console.log('3. Convert Google Drive link to embed format:');
+        console.log('   Original: https://drive.google.com/file/d/VIDEO_ID/view');
+        console.log('   Embed:    https://drive.google.com/file/d/VIDEO_ID/preview');
+        console.log('4. Replace the VIDEO_ID in featureLinks object');
+        console.log('5. Make sure sharing settings allow "Anyone with link can view"');
+
+      
+    </script>
+</body>
+</html>
